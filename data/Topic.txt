@@ -1,11 +1,102 @@
 [
   {
     "id": 1,
-    "views": 26,
-    "title": "gw ",
-    "content": "123",
-    "ct": 1490794007,
-    "ut": 1490794007,
-    "user_id": 1
+    "views": 11,
+    "title": "python入门",
+    "content": "### 1. generator表达式：\r\n    #generator表达式\r\n    def test1():\r\n        L = [ x*2 for x in range(5)] #list conprehension \r\n        G = ( x*2 for x in range(5))\r\n        p(next(G))\r\n        p(next(G))\r\n        p(next(G))\r\n        p(next(G))\r\n        p(next(G)) #因为G的元素个数最大为5\r\n        next(G) #报异常StopIteration\r\n    #test1()\r\n    \r\n    def test2():\r\n        G = ( x*2 for x in range(5))\r\n        for g in G: #自动处理了StopIteration\r\n            p(g)\r\n    #test2()\r\n\r\n### 2. generator函数：yield\r\n    def fib(times):\r\n        n=0\r\n        a,b=0,1\r\n        while n<times:\r\n            yield b  #yield（放弃）函数执行到这个地方会交出CPU控制权，停止执行，调用next再继续\r\n            a,b=b,a+b\r\n            n=n+1\r\n        return \"done\"\r\n     \r\n    g = fib(5) #应该是5个元素，一次next(g)消耗一个。消耗完这个g就会销毁 {本次已经用了一个元素}\r\n     \r\n    print(next(g),'\\n')\r\n     \r\n    for x in g: #还能用4次\r\n        print(x)\r\n      \r\n    #print(next(g),'\\n') #g的元素已经被for用完了\r\n    \r\n### 3. `send(), next(), __next__()`\r\n>* 都是用来激活generator的函数\r\n>* `send(实参)` 可以给generator发送数据，实现外部控制内部\r\n>* `对象名.send(None)` 等价于 `next(对象名)`, `对象名.__next__()`;所以`send()`是核心\r\n\r\n* #### 代码测试：\r\n\r\n\r\n    def gen(times):\r\n            n=0\r\n            while n<times:\r\n                temp = yield n*2\r\n                print(\"temp = \", temp)\r\n                n=n+1\r\n            return \"done\"\r\n        \r\n    g = gen(5) #5次循环，5个元素\r\n    g.send(None) # 等价于next(g)，启动generator，以后默认都会\r\n    g.send(666)  #发送了666给temp\r\n    print('\\n')\r\n    for x in g: #现在g里面还能生产3个元素\r\n        print(\"x = \", x)\r\n",
+    "ct": 1521004714,
+    "ut": 1521004714,
+    "user_id": 2,
+    "board_id": 1
+  },
+  {
+    "id": 2,
+    "views": 3,
+    "title": "python入门",
+    "content": "### 1. generator表达式：\r\n    #generator表达式\r\n    def test1():\r\n        L = [ x*2 for x in range(5)] #list conprehension \r\n        G = ( x*2 for x in range(5))\r\n        p(next(G))\r\n        p(next(G))\r\n        p(next(G))\r\n        p(next(G))\r\n        p(next(G)) #因为G的元素个数最大为5\r\n        next(G) #报异常StopIteration\r\n    #test1()\r\n    \r\n    def test2():\r\n        G = ( x*2 for x in range(5))\r\n        for g in G: #自动处理了StopIteration\r\n            p(g)\r\n    #test2()\r\n\r\n### 2. generator函数：yield\r\n    def fib(times):\r\n        n=0\r\n        a,b=0,1\r\n        while n<times:\r\n            yield b  #yield（放弃）函数执行到这个地方会交出CPU控制权，停止执行，调用next再继续\r\n            a,b=b,a+b\r\n            n=n+1\r\n        return \"done\"\r\n     \r\n    g = fib(5) #应该是5个元素，一次next(g)消耗一个。消耗完这个g就会销毁 {本次已经用了一个元素}\r\n     \r\n    print(next(g),'\\n')\r\n     \r\n    for x in g: #还能用4次\r\n        print(x)\r\n      \r\n    #print(next(g),'\\n') #g的元素已经被for用完了\r\n    \r\n### 3. `send(), next(), __next__()`\r\n>* 都是用来激活generator的函数\r\n>* `send(实参)` 可以给generator发送数据，实现外部控制内部\r\n>* `对象名.send(None)` 等价于 `next(对象名)`, `对象名.__next__()`;所以`send()`是核心\r\n\r\n* #### 代码测试：\r\n\r\n\r\n    def gen(times):\r\n            n=0\r\n            while n<times:\r\n                temp = yield n*2\r\n                print(\"temp = \", temp)\r\n                n=n+1\r\n            return \"done\"\r\n        \r\n    g = gen(5) #5次循环，5个元素\r\n    g.send(None) # 等价于next(g)，启动generator，以后默认都会\r\n    g.send(666)  #发送了666给temp\r\n    print('\\n')\r\n    for x in g: #现在g里面还能生产3个元素\r\n        print(\"x = \", x)\r\n",
+    "ct": 1521004793,
+    "ut": 1521004793,
+    "user_id": 2,
+    "board_id": 1
+  },
+  {
+    "id": 3,
+    "views": 2,
+    "title": "python入门2",
+    "content": "### 1. generator表达式：\r\n    #generator表达式\r\n    def test1():\r\n        L = [ x*2 for x in range(5)] #list conprehension \r\n        G = ( x*2 for x in range(5))\r\n        p(next(G))\r\n        p(next(G))\r\n        p(next(G))\r\n        p(next(G))\r\n        p(next(G)) #因为G的元素个数最大为5\r\n        next(G) #报异常StopIteration\r\n    #test1()\r\n    \r\n    def test2():\r\n        G = ( x*2 for x in range(5))\r\n        for g in G: #自动处理了StopIteration\r\n            p(g)\r\n    #test2()\r\n\r\n### 2. generator函数：yield\r\n    def fib(times):\r\n        n=0\r\n        a,b=0,1\r\n        while n<times:\r\n            yield b  #yield（放弃）函数执行到这个地方会交出CPU控制权，停止执行，调用next再继续\r\n            a,b=b,a+b\r\n            n=n+1\r\n        return \"done\"\r\n     \r\n    g = fib(5) #应该是5个元素，一次next(g)消耗一个。消耗完这个g就会销毁 {本次已经用了一个元素}\r\n     \r\n    print(next(g),'\\n')\r\n     \r\n    for x in g: #还能用4次\r\n        print(x)\r\n      \r\n    #print(next(g),'\\n') #g的元素已经被for用完了\r\n    \r\n### 3. `send(), next(), __next__()`\r\n>* 都是用来激活generator的函数\r\n>* `send(实参)` 可以给generator发送数据，实现外部控制内部\r\n>* `对象名.send(None)` 等价于 `next(对象名)`, `对象名.__next__()`;所以`send()`是核心\r\n\r\n* #### 代码测试：\r\n\r\n\r\n    def gen(times):\r\n            n=0\r\n            while n<times:\r\n                temp = yield n*2\r\n                print(\"temp = \", temp)\r\n                n=n+1\r\n            return \"done\"\r\n        \r\n    g = gen(5) #5次循环，5个元素\r\n    g.send(None) # 等价于next(g)，启动generator，以后默认都会\r\n    g.send(666)  #发送了666给temp\r\n    print('\\n')\r\n    for x in g: #现在g里面还能生产3个元素\r\n        print(\"x = \", x)\r\n",
+    "ct": 1521004802,
+    "ut": 1521004802,
+    "user_id": 2,
+    "board_id": 1
+  },
+  {
+    "id": 4,
+    "views": 1,
+    "title": "python入门333",
+    "content": "### 1. generator表达式：\r\n    #generator表达式\r\n    def test1():\r\n        L = [ x*2 for x in range(5)] #list conprehension \r\n        G = ( x*2 for x in range(5))\r\n        p(next(G))\r\n        p(next(G))\r\n        p(next(G))\r\n        p(next(G))\r\n        p(next(G)) #因为G的元素个数最大为5\r\n        next(G) #报异常StopIteration\r\n    #test1()\r\n    \r\n    def test2():\r\n        G = ( x*2 for x in range(5))\r\n        for g in G: #自动处理了StopIteration\r\n            p(g)\r\n    #test2()\r\n\r\n### 2. generator函数：yield\r\n    def fib(times):\r\n        n=0\r\n        a,b=0,1\r\n        while n<times:\r\n            yield b  #yield（放弃）函数执行到这个地方会交出CPU控制权，停止执行，调用next再继续\r\n            a,b=b,a+b\r\n            n=n+1\r\n        return \"done\"\r\n     \r\n    g = fib(5) #应该是5个元素，一次next(g)消耗一个。消耗完这个g就会销毁 {本次已经用了一个元素}\r\n     \r\n    print(next(g),'\\n')\r\n     \r\n    for x in g: #还能用4次\r\n        print(x)\r\n      \r\n    #print(next(g),'\\n') #g的元素已经被for用完了\r\n    \r\n### 3. `send(), next(), __next__()`\r\n>* 都是用来激活generator的函数\r\n>* `send(实参)` 可以给generator发送数据，实现外部控制内部\r\n>* `对象名.send(None)` 等价于 `next(对象名)`, `对象名.__next__()`;所以`send()`是核心\r\n\r\n* #### 代码测试：\r\n\r\n\r\n    def gen(times):\r\n            n=0\r\n            while n<times:\r\n                temp = yield n*2\r\n                print(\"temp = \", temp)\r\n                n=n+1\r\n            return \"done\"\r\n        \r\n    g = gen(5) #5次循环，5个元素\r\n    g.send(None) # 等价于next(g)，启动generator，以后默认都会\r\n    g.send(666)  #发送了666给temp\r\n    print('\\n')\r\n    for x in g: #现在g里面还能生产3个元素\r\n        print(\"x = \", x)\r\n",
+    "ct": 1521004810,
+    "ut": 1521004810,
+    "user_id": 2,
+    "board_id": 1
+  },
+  {
+    "id": 5,
+    "views": 1,
+    "title": "python入门444",
+    "content": "### 1. generator表达式：\r\n    #generator表达式\r\n    def test1():\r\n        L = [ x*2 for x in range(5)] #list conprehension \r\n        G = ( x*2 for x in range(5))\r\n        p(next(G))\r\n        p(next(G))\r\n        p(next(G))\r\n        p(next(G))\r\n        p(next(G)) #因为G的元素个数最大为5\r\n        next(G) #报异常StopIteration\r\n    #test1()\r\n    \r\n    def test2():\r\n        G = ( x*2 for x in range(5))\r\n        for g in G: #自动处理了StopIteration\r\n            p(g)\r\n    #test2()\r\n\r\n### 2. generator函数：yield\r\n    def fib(times):\r\n        n=0\r\n        a,b=0,1\r\n        while n<times:\r\n            yield b  #yield（放弃）函数执行到这个地方会交出CPU控制权，停止执行，调用next再继续\r\n            a,b=b,a+b\r\n            n=n+1\r\n        return \"done\"\r\n     \r\n    g = fib(5) #应该是5个元素，一次next(g)消耗一个。消耗完这个g就会销毁 {本次已经用了一个元素}\r\n     \r\n    print(next(g),'\\n')\r\n     \r\n    for x in g: #还能用4次\r\n        print(x)\r\n      \r\n    #print(next(g),'\\n') #g的元素已经被for用完了\r\n    \r\n### 3. `send(), next(), __next__()`\r\n>* 都是用来激活generator的函数\r\n>* `send(实参)` 可以给generator发送数据，实现外部控制内部\r\n>* `对象名.send(None)` 等价于 `next(对象名)`, `对象名.__next__()`;所以`send()`是核心\r\n\r\n* #### 代码测试：\r\n\r\n\r\n    def gen(times):\r\n            n=0\r\n            while n<times:\r\n                temp = yield n*2\r\n                print(\"temp = \", temp)\r\n                n=n+1\r\n            return \"done\"\r\n        \r\n    g = gen(5) #5次循环，5个元素\r\n    g.send(None) # 等价于next(g)，启动generator，以后默认都会\r\n    g.send(666)  #发送了666给temp\r\n    print('\\n')\r\n    for x in g: #现在g里面还能生产3个元素\r\n        print(\"x = \", x)\r\n",
+    "ct": 1521004819,
+    "ut": 1521004819,
+    "user_id": 2,
+    "board_id": 1
+  },
+  {
+    "id": 6,
+    "views": 1,
+    "title": "python入门555",
+    "content": "### 1. generator表达式：\r\n    #generator表达式\r\n    def test1():\r\n        L = [ x*2 for x in range(5)] #list conprehension \r\n        G = ( x*2 for x in range(5))\r\n        p(next(G))\r\n        p(next(G))\r\n        p(next(G))\r\n        p(next(G))\r\n        p(next(G)) #因为G的元素个数最大为5\r\n        next(G) #报异常StopIteration\r\n    #test1()\r\n    \r\n    def test2():\r\n        G = ( x*2 for x in range(5))\r\n        for g in G: #自动处理了StopIteration\r\n            p(g)\r\n    #test2()\r\n\r\n### 2. generator函数：yield\r\n    def fib(times):\r\n        n=0\r\n        a,b=0,1\r\n        while n<times:\r\n            yield b  #yield（放弃）函数执行到这个地方会交出CPU控制权，停止执行，调用next再继续\r\n            a,b=b,a+b\r\n            n=n+1\r\n        return \"done\"\r\n     \r\n    g = fib(5) #应该是5个元素，一次next(g)消耗一个。消耗完这个g就会销毁 {本次已经用了一个元素}\r\n     \r\n    print(next(g),'\\n')\r\n     \r\n    for x in g: #还能用4次\r\n        print(x)\r\n      \r\n    #print(next(g),'\\n') #g的元素已经被for用完了\r\n    \r\n### 3. `send(), next(), __next__()`\r\n>* 都是用来激活generator的函数\r\n>* `send(实参)` 可以给generator发送数据，实现外部控制内部\r\n>* `对象名.send(None)` 等价于 `next(对象名)`, `对象名.__next__()`;所以`send()`是核心\r\n\r\n* #### 代码测试：\r\n\r\n\r\n    def gen(times):\r\n            n=0\r\n            while n<times:\r\n                temp = yield n*2\r\n                print(\"temp = \", temp)\r\n                n=n+1\r\n            return \"done\"\r\n        \r\n    g = gen(5) #5次循环，5个元素\r\n    g.send(None) # 等价于next(g)，启动generator，以后默认都会\r\n    g.send(666)  #发送了666给temp\r\n    print('\\n')\r\n    for x in g: #现在g里面还能生产3个元素\r\n        print(\"x = \", x)\r\n",
+    "ct": 1521004826,
+    "ut": 1521004826,
+    "user_id": 2,
+    "board_id": 1
+  },
+  {
+    "id": 7,
+    "views": 1,
+    "title": "python入门666",
+    "content": "### 1. generator表达式：\r\n    #generator表达式\r\n    def test1():\r\n        L = [ x*2 for x in range(5)] #list conprehension \r\n        G = ( x*2 for x in range(5))\r\n        p(next(G))\r\n        p(next(G))\r\n        p(next(G))\r\n        p(next(G))\r\n        p(next(G)) #因为G的元素个数最大为5\r\n        next(G) #报异常StopIteration\r\n    #test1()\r\n    \r\n    def test2():\r\n        G = ( x*2 for x in range(5))\r\n        for g in G: #自动处理了StopIteration\r\n            p(g)\r\n    #test2()\r\n\r\n### 2. generator函数：yield\r\n    def fib(times):\r\n        n=0\r\n        a,b=0,1\r\n        while n<times:\r\n            yield b  #yield（放弃）函数执行到这个地方会交出CPU控制权，停止执行，调用next再继续\r\n            a,b=b,a+b\r\n            n=n+1\r\n        return \"done\"\r\n     \r\n    g = fib(5) #应该是5个元素，一次next(g)消耗一个。消耗完这个g就会销毁 {本次已经用了一个元素}\r\n     \r\n    print(next(g),'\\n')\r\n     \r\n    for x in g: #还能用4次\r\n        print(x)\r\n      \r\n    #print(next(g),'\\n') #g的元素已经被for用完了\r\n    \r\n### 3. `send(), next(), __next__()`\r\n>* 都是用来激活generator的函数\r\n>* `send(实参)` 可以给generator发送数据，实现外部控制内部\r\n>* `对象名.send(None)` 等价于 `next(对象名)`, `对象名.__next__()`;所以`send()`是核心\r\n\r\n* #### 代码测试：\r\n\r\n\r\n    def gen(times):\r\n            n=0\r\n            while n<times:\r\n                temp = yield n*2\r\n                print(\"temp = \", temp)\r\n                n=n+1\r\n            return \"done\"\r\n        \r\n    g = gen(5) #5次循环，5个元素\r\n    g.send(None) # 等价于next(g)，启动generator，以后默认都会\r\n    g.send(666)  #发送了666给temp\r\n    print('\\n')\r\n    for x in g: #现在g里面还能生产3个元素\r\n        print(\"x = \", x)\r\n",
+    "ct": 1521004833,
+    "ut": 1521004833,
+    "user_id": 2,
+    "board_id": 1
+  },
+  {
+    "id": 8,
+    "views": 1,
+    "title": "python入门777",
+    "content": "### 1. generator表达式：\r\n    #generator表达式\r\n    def test1():\r\n        L = [ x*2 for x in range(5)] #list conprehension \r\n        G = ( x*2 for x in range(5))\r\n        p(next(G))\r\n        p(next(G))\r\n        p(next(G))\r\n        p(next(G))\r\n        p(next(G)) #因为G的元素个数最大为5\r\n        next(G) #报异常StopIteration\r\n    #test1()\r\n    \r\n    def test2():\r\n        G = ( x*2 for x in range(5))\r\n        for g in G: #自动处理了StopIteration\r\n            p(g)\r\n    #test2()\r\n\r\n### 2. generator函数：yield\r\n    def fib(times):\r\n        n=0\r\n        a,b=0,1\r\n        while n<times:\r\n            yield b  #yield（放弃）函数执行到这个地方会交出CPU控制权，停止执行，调用next再继续\r\n            a,b=b,a+b\r\n            n=n+1\r\n        return \"done\"\r\n     \r\n    g = fib(5) #应该是5个元素，一次next(g)消耗一个。消耗完这个g就会销毁 {本次已经用了一个元素}\r\n     \r\n    print(next(g),'\\n')\r\n     \r\n    for x in g: #还能用4次\r\n        print(x)\r\n      \r\n    #print(next(g),'\\n') #g的元素已经被for用完了\r\n    \r\n### 3. `send(), next(), __next__()`\r\n>* 都是用来激活generator的函数\r\n>* `send(实参)` 可以给generator发送数据，实现外部控制内部\r\n>* `对象名.send(None)` 等价于 `next(对象名)`, `对象名.__next__()`;所以`send()`是核心\r\n\r\n* #### 代码测试：\r\n\r\n\r\n    def gen(times):\r\n            n=0\r\n            while n<times:\r\n                temp = yield n*2\r\n                print(\"temp = \", temp)\r\n                n=n+1\r\n            return \"done\"\r\n        \r\n    g = gen(5) #5次循环，5个元素\r\n    g.send(None) # 等价于next(g)，启动generator，以后默认都会\r\n    g.send(666)  #发送了666给temp\r\n    print('\\n')\r\n    for x in g: #现在g里面还能生产3个元素\r\n        print(\"x = \", x)\r\n",
+    "ct": 1521004842,
+    "ut": 1521004842,
+    "user_id": 2,
+    "board_id": 1
+  },
+  {
+    "id": 9,
+    "views": 1,
+    "title": "python入门888",
+    "content": "### 1. generator表达式：\r\n    #generator表达式\r\n    def test1():\r\n        L = [ x*2 for x in range(5)] #list conprehension \r\n        G = ( x*2 for x in range(5))\r\n        p(next(G))\r\n        p(next(G))\r\n        p(next(G))\r\n        p(next(G))\r\n        p(next(G)) #因为G的元素个数最大为5\r\n        next(G) #报异常StopIteration\r\n    #test1()\r\n    \r\n    def test2():\r\n        G = ( x*2 for x in range(5))\r\n        for g in G: #自动处理了StopIteration\r\n            p(g)\r\n    #test2()\r\n\r\n### 2. generator函数：yield\r\n    def fib(times):\r\n        n=0\r\n        a,b=0,1\r\n        while n<times:\r\n            yield b  #yield（放弃）函数执行到这个地方会交出CPU控制权，停止执行，调用next再继续\r\n            a,b=b,a+b\r\n            n=n+1\r\n        return \"done\"\r\n     \r\n    g = fib(5) #应该是5个元素，一次next(g)消耗一个。消耗完这个g就会销毁 {本次已经用了一个元素}\r\n     \r\n    print(next(g),'\\n')\r\n     \r\n    for x in g: #还能用4次\r\n        print(x)\r\n      \r\n    #print(next(g),'\\n') #g的元素已经被for用完了\r\n    \r\n### 3. `send(), next(), __next__()`\r\n>* 都是用来激活generator的函数\r\n>* `send(实参)` 可以给generator发送数据，实现外部控制内部\r\n>* `对象名.send(None)` 等价于 `next(对象名)`, `对象名.__next__()`;所以`send()`是核心\r\n\r\n* #### 代码测试：\r\n\r\n\r\n    def gen(times):\r\n            n=0\r\n            while n<times:\r\n                temp = yield n*2\r\n                print(\"temp = \", temp)\r\n                n=n+1\r\n            return \"done\"\r\n        \r\n    g = gen(5) #5次循环，5个元素\r\n    g.send(None) # 等价于next(g)，启动generator，以后默认都会\r\n    g.send(666)  #发送了666给temp\r\n    print('\\n')\r\n    for x in g: #现在g里面还能生产3个元素\r\n        print(\"x = \", x)\r\n",
+    "ct": 1521004851,
+    "ut": 1521004851,
+    "user_id": 2,
+    "board_id": 1
+  },
+  {
+    "id": 10,
+    "views": 1,
+    "title": "python入门999",
+    "content": "### 1. generator表达式：\r\n    #generator表达式\r\n    def test1():\r\n        L = [ x*2 for x in range(5)] #list conprehension \r\n        G = ( x*2 for x in range(5))\r\n        p(next(G))\r\n        p(next(G))\r\n        p(next(G))\r\n        p(next(G))\r\n        p(next(G)) #因为G的元素个数最大为5\r\n        next(G) #报异常StopIteration\r\n    #test1()\r\n    \r\n    def test2():\r\n        G = ( x*2 for x in range(5))\r\n        for g in G: #自动处理了StopIteration\r\n            p(g)\r\n    #test2()\r\n\r\n### 2. generator函数：yield\r\n    def fib(times):\r\n        n=0\r\n        a,b=0,1\r\n        while n<times:\r\n            yield b  #yield（放弃）函数执行到这个地方会交出CPU控制权，停止执行，调用next再继续\r\n            a,b=b,a+b\r\n            n=n+1\r\n        return \"done\"\r\n     \r\n    g = fib(5) #应该是5个元素，一次next(g)消耗一个。消耗完这个g就会销毁 {本次已经用了一个元素}\r\n     \r\n    print(next(g),'\\n')\r\n     \r\n    for x in g: #还能用4次\r\n        print(x)\r\n      \r\n    #print(next(g),'\\n') #g的元素已经被for用完了\r\n    \r\n### 3. `send(), next(), __next__()`\r\n>* 都是用来激活generator的函数\r\n>* `send(实参)` 可以给generator发送数据，实现外部控制内部\r\n>* `对象名.send(None)` 等价于 `next(对象名)`, `对象名.__next__()`;所以`send()`是核心\r\n\r\n* #### 代码测试：\r\n\r\n\r\n    def gen(times):\r\n            n=0\r\n            while n<times:\r\n                temp = yield n*2\r\n                print(\"temp = \", temp)\r\n                n=n+1\r\n            return \"done\"\r\n        \r\n    g = gen(5) #5次循环，5个元素\r\n    g.send(None) # 等价于next(g)，启动generator，以后默认都会\r\n    g.send(666)  #发送了666给temp\r\n    print('\\n')\r\n    for x in g: #现在g里面还能生产3个元素\r\n        print(\"x = \", x)\r\n",
+    "ct": 1521004861,
+    "ut": 1521004861,
+    "user_id": 2,
+    "board_id": 1
   }
 ]
